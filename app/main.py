@@ -15,6 +15,9 @@ def initialize_system():
 
     print(f"System started at: {current_time}")
     print("System Status: ONLINE")
+    print("Monitoring Mode: DEVELOPMENT")
+    print("Log Source: Local Authentication Logs")
+    print("Project Version: 0.1.0")
     print("Detection Engine: Not initialized")
     print("Database: Not connected")
 
