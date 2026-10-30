@@ -36,13 +36,29 @@ and network activity and identify potential security threats.
 
 ## Current Progress
 
-**Day 1 of 10 — Initial Project Setup**
+**Day 2 of 10 — Security Log Analysis**
 
 Completed:
-- Project structure
-- Python environment setup
+- Python development environment
+- GitHub repository setup
 - Application initialization
-- Sample authentication logs
+- Security log parser
+- Authentication event analysis
+- IP-based activity statistics
+- Invalid log handling
+- Automated parser tests
+
+### Current Capabilities
+
+SentinelSOC can currently:
+
+1. Read simulated authentication log files.
+2. Extract timestamps, usernames, event types, and IP addresses.
+3. Validate authentication events.
+4. Count successful and failed login attempts.
+5. Calculate authentication statistics for individual IP addresses.
+6. Identify unique source IP addresses.
+7. Report invalid log entries.
 
 ## Running the Application
 
@@ -57,7 +73,7 @@ python -m venv .venv
 Activate the environment and run:
 
 ```bash
-python app/main.py
+python -m app/main.py
 ```
 
 ## Disclaimer
@@ -71,3 +87,11 @@ where authorization has been granted.
 ## Development Status
 
 Under active development.
+
+## Testing
+
+Run the automated parser tests:
+
+```bash
+python -m unittest discover -s tests -v
+```
