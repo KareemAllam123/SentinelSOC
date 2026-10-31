@@ -36,17 +36,43 @@ and network activity and identify potential security threats.
 
 ## Current Progress
 
-**Day 2 of 10 — Security Log Analysis**
+**Day 3 of 10 — Security Log Analysis**
 
 Completed:
-- Python development environment
-- GitHub repository setup
-- Application initialization
-- Security log parser
-- Authentication event analysis
-- IP-based activity statistics
+- Python project setup
+- GitHub version control
+- Authentication log parsing
+- Login activity statistics
+- Failed-login percentage calculation
 - Invalid log handling
-- Automated parser tests
+- Time-based brute-force detection
+- IP and username event correlation
+- Configurable detection thresholds
+- Security alert generation
+- Automated parser and detection tests
+- Successful-login-after-brute-force detection
+- Critical security alert generation
+- Authentication event correlation
+
+### Brute-Force Detection
+
+SentinelSOC identifies possible brute-force attacks by analyzing
+failed authentication attempts within a configurable time window.
+
+Default detection settings:
+
+- Failed login threshold: 5
+- Time window: 60 seconds
+- Alert severity: HIGH
+
+Example alert:
+
+```text
+Alert Type: POSSIBLE_BRUTE_FORCE
+Source IP: 192.168.1.10
+Target Account: admin
+Failed Attempts: 5
+Severity: HIGH
 
 ### Current Capabilities
 
@@ -95,3 +121,15 @@ Run the automated parser tests:
 ```bash
 python -m unittest discover -s tests -v
 ```
+
+### Account Compromise Detection
+
+SentinelSOC detects potentially suspicious successful logins
+following repeated failed authentication attempts.
+
+When five failed login attempts trigger a brute-force alert,
+a successful login from the same IP address into the same
+account within 60 seconds generates a CRITICAL alert.
+
+This pattern may indicate unauthorized access but does not
+confirm that an account has been compromised.

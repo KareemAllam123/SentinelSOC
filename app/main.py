@@ -6,6 +6,10 @@ from app.analyzer import (
     analyze_authentication_events,
     display_report
 )
+from detection.brute_force import (
+    detect_brute_force,
+    display_security_alerts
+)
 
 
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -36,7 +40,7 @@ def initialize_system():
     print("System Status: ONLINE")
     print("Monitoring Mode: DEVELOPMENT")
     print("Log Source: Local Authentication Logs")
-    print("Project Version: 0.2.0")
+    print("Project Version: 0.3.0")
 
     print("\nInitialization complete.")
 
@@ -60,6 +64,16 @@ def main():
     statistics = analyze_authentication_events(events)
 
     display_report(statistics, invalid_lines)
+
+    print("\nRunning brute-force detection engine...")
+
+    alerts = detect_brute_force(
+        events,
+        threshold=5,
+        window_seconds=60
+    )
+
+    display_security_alerts(alerts)
 
 
 if __name__ == "__main__":
